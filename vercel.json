@@ -1,0 +1,27 @@
+{
+    "scripts": {
+      "postinstall": "npm run build",
+      "start": "npm run start-with-json-server"
+    },
+    "builds": [
+      {
+        "src": "package.json",
+        "use": "@vercel/node"
+      },
+      {
+        "src": "public/**/*",
+        "use": "@vercel/static"
+      }
+    ],
+    "routes": [
+      {
+        "src": "/(.*)",
+        "dest": "http://localhost:3001/"
+      },
+      {
+        "src": ".*",
+        "dest": "public/$&"
+      }      
+    ]
+  }
+  
